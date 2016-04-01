@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 
 public class Bullet : MonoBehaviour {
@@ -52,3 +52,4 @@ public class Bullet : MonoBehaviour {
     }
 
 }
+*/

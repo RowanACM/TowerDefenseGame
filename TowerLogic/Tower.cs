@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 
 public class Tower : MonoBehaviour {
@@ -22,6 +22,7 @@ public class Tower : MonoBehaviour {
             We might want the turret to rotate base on the direction it's shooting at, it's not hard to do, but since we have multiple 
         models, some of them would only rotate a partial of the model, so it is not in this basic tower logic code.
     */
+    /*
 	void Update () {
         if(Time.time - lastFire > cooldown) // attack process;
         {
@@ -71,3 +72,4 @@ public class Tower : MonoBehaviour {
 
     }
 }
+*/
