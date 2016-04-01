@@ -1,16 +1,16 @@
-﻿/*using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class Tower : MonoBehaviour {
     public GameObject bullet;
 
-    float range = 10.0f;
-    int damage; // the actual dealing damage is in the Bullet class;
+	public float range;
+    public int damage; // the actual dealing damage is in the Bullet class;
     float cooldown = .2f;
     float lastFire = 0.0f;
     Transform target = null;
-    float health; // NEED to be determine base on boss bugs attacks.
-    int cost; // Not sure if we need this here;
+    public float health; // NEED to be determine base on boss bugs attacks.
+    //int cost; // Not sure if we need this here;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +22,7 @@ public class Tower : MonoBehaviour {
             We might want the turret to rotate base on the direction it's shooting at, it's not hard to do, but since we have multiple 
         models, some of them would only rotate a partial of the model, so it is not in this basic tower logic code.
     */
-    /*
+    
 	void Update () {
         if(Time.time - lastFire > cooldown) // attack process;
         {
@@ -72,4 +72,3 @@ public class Tower : MonoBehaviour {
 
     }
 }
-*/
