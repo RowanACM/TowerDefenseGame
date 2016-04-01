@@ -5,11 +5,11 @@ public class GreenCellScript : MonoBehaviour {
 
     private Color startColor;
 
-	void OnMouseEnter() {
+    void OnMouseEnter() {
         startColor = GetComponent<Renderer>().material.color;
         GetComponent<Renderer>().material.color = Color.green;
     }
-
+    
     void OnMouseExit() {
         GetComponent<Renderer>().material.color = startColor;
     }
