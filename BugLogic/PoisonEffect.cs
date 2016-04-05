@@ -14,7 +14,7 @@ public class PoisonEffect : Effect {
 		if (this.time <= 0) {
 			reverseEffect ();
 		} else if (!didIt) {
-			doEffect (); // doEffect() is here because this effect must modify a value at regular intervals, whereas halving armor is just once
+			doEffect ();
 		}
 	}
 

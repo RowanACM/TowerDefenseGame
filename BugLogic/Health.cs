@@ -11,7 +11,8 @@ public class Health : MonoBehaviour {
 	}
 
 	void OnCollisionStay(Collision collision) {
-		if (collision.gameObject.GetComponent ("Damage") != null && !inv) {
+		if ( (collision.gameObject.GetComponent ("Damage") != null && !inv)
+		    	&& (this.gameObject.GetComponent("Bug") == null ^ collision.gameObject.GetComponent("Bug") == null) ) {
 			Damage damageComponent = collision.gameObject.GetComponent ("Damage") as Damage;
 			if (this.gameObject.GetComponent("Armor") != null) {
 				Armor armorComponent = this.gameObject.GetComponent ("Armor") as Armor;
@@ -26,7 +27,7 @@ public class Health : MonoBehaviour {
 	IEnumerator DamageCoroutine() {
 		checkHealth ();
 		inv = true;
-		yield return new WaitForSeconds (0.5f);
+		yield return new WaitForSeconds (0.1f);
 		inv = false;
 	}
 		

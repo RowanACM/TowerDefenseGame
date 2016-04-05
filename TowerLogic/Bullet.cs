@@ -20,21 +20,26 @@ public class Bullet : MonoBehaviour {
             return;
         }
 
+		if (Target == null) { // target has been eliminated
+			Destroy(gameObject); // remove this bullet from the scene
+		}
+
        transition += (Time.deltaTime / ApproachingTarget)*10;   // speed of bullet
 
         CheckHitTarget();
-
-        transform.position = Vector3.Lerp(Tower.position, Target.position, transition); //update locatoins so it follows
-
+		if (Target != null) {
+			transform.position = Vector3.Lerp (Tower.position, Target.position, transition); //update locatoins so it follows
+		}
 	}
 
     void CheckHitTarget()
     {
-        float distance = Vector3.Distance(transform.position, Target.position);
-        if(distance <= range) // if bullet hits the target;
-        {
-            DoDamage(Target, damage);
-        }
+		if (Target != null) {
+			float distance = Vector3.Distance (transform.position, Target.position);
+			if (distance <= range) { // if bullet hits the target;
+				DoDamage (Target, damage);
+			}
+		}
     }
 
     void DoDamage(Transform target, int damage)  // Need to work with bug logic;
