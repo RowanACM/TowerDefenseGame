@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RedCellScript : MonoBehaviour {
+public class RedCellScript : DragAndDrop {
 
     private Color startColor;
+    private Vector3 pos;
 
     void OnMouseEnter() {
         startColor = GetComponent<Renderer>().material.color;

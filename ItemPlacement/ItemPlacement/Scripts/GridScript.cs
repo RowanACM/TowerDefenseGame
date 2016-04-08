@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GridScript : MonoBehaviour {
+public class GridScript : DragAndDrop {
 
-    public List<Transform> cells = new List<Transform>();
+    public List<Transform> cells = new List<Transform>(100);
     public Transform GreenCell;
     public Transform RedCell;
     public Vector3 Size;
     public string SecretCode;
+    public Transform cell;
     int c = 0;
 
 	void Start() {
@@ -21,12 +22,16 @@ public class GridScript : MonoBehaviour {
                 c++;
                 string part = SecretCode.Substring(c, 1);
                 if(part.Equals("1")) {
-                    Instantiate(GreenCell, new Vector3(x, 0, z), Quaternion.identity);
+                    Instantiate(GreenCell, new Vector3(6*x-28, 1, 6*z-30), Quaternion.identity);
+                    cells.Add(GreenCell);
                 }
                 else {
-                    Instantiate(RedCell, new Vector3(x, 0, z), Quaternion.identity);
+                    Instantiate(RedCell, new Vector3(6*x-28, 1, 6*z-30), Quaternion.identity);
+                    cells.Add(RedCell);
                 }
             }
         }
     }
+
+
 }
