@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Health : MonoBehaviour {
 
-	public int health;
+	public float health;
 	private bool inv; // invincibility frames active?
 	// Use this for initialization
 	void Start () {
@@ -30,7 +30,7 @@ public class Health : MonoBehaviour {
 		yield return new WaitForSeconds (0.1f);
 		inv = false;
 	}
-		
+
 	public void checkHealth() {
 		if (this.health <= 0) {
 			this.health = 0;

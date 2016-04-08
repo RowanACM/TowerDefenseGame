@@ -40,7 +40,7 @@ public abstract class Tower : MonoBehaviour {
         lastFire = Time.time;   //set lastFire to the time it fire.
 
         GameObject Bul = Instantiate(bullet, transform.position, Quaternion.identity) as GameObject;    //Instatiate the bullet
-        //Bul.GetComponent<Bullet>().Targeting(transform,t,damage);   //get components of Bullet, then pass in the tower, target ,tower damge;
+        Bul.GetComponent<Bullet>().Targeting(transform,t,damage);   //get components of Bullet, then pass in the tower, target ,tower damge;
         target = null;      //reset target.
     }
 

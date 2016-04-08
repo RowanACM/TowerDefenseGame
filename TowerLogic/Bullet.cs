@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour {
 
     public Transform Tower;
     public Transform Target;
-    public int damage;
+    public float damage;
     public float ApproachingTarget = 1.0f;
     public float transition = 0.0f;
     public bool fired = false;
@@ -42,7 +42,7 @@ public class Bullet : MonoBehaviour {
 		}
     }
 
-    void DoDamage(Transform target, int damage)  // Need to work with bug logic;
+    void DoDamage(Transform target, float damage)  // Need to work with bug logic;
     {
 		Health tHealth = target.GetComponent ("Health") as Health;
 
@@ -57,7 +57,7 @@ public class Bullet : MonoBehaviour {
 		Destroy(gameObject); //destroy bullet;
     }
 
-    public void Targeting(Transform tower, Transform target, int damage) 
+    public void Targeting(Transform tower, Transform target, float damage) 
     {
         fired = true;
         Tower = tower;
