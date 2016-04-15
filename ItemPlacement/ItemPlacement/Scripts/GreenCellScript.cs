@@ -15,11 +15,14 @@ public class GreenCellScript : MonoBehaviour {
     }
 
     void OnMouseUp() {
-        if(drag.available) {
+
+        bool avail = drag.getAvailable();
+        if(avail) {
             Instantiate(item, gCell.position, Quaternion.identity);
             Instantiate(redCell, gCell.position, Quaternion.identity);
             Destroy(gameObject);
-            drag.available = false;
+            bool avil = false;
+            drag.changeAvailable(avil);
             print("in");
         }
         print("not in");

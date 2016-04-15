@@ -5,7 +5,7 @@ public class DragAndDrop : MonoBehaviour {
 
 	public Store store;
 	public GameObject item;
-    public bool available;
+    public bool available = false;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +17,14 @@ public class DragAndDrop : MonoBehaviour {
         print("clicked");
     }
 
+    public bool getAvailable() {
+        return available;
+    }
+
+    public void changeAvailable(bool avail) {
+        available = avail;
+    }
+
     /*
 
 	void OnMouseDown () {
@@ -26,9 +34,9 @@ public class DragAndDrop : MonoBehaviour {
 	}
 
     */
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }
