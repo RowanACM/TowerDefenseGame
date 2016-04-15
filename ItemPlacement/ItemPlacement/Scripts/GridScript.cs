@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GridScript : DragAndDrop {
+public class GridScript : MonoBehaviour {
 
     public List<Transform> cells = new List<Transform>(100);
     public Transform GreenCell;

@@ -2,18 +2,21 @@
 using System.Collections;
 
 public class GreenCellScript : DragAndDrop {
-
     private Color startColor;
-    public CursorMode cursor = CursorMode.Auto;
+    public GameObject item;
+    public Transform gCell;
+    public Transform redCell;
+    
 
     void OnMouseEnter() {
         startColor = GetComponent<Renderer>().material.color;
         GetComponent<Renderer>().material.color = Color.green;
-        Cursor.SetCursor(null, transform.position, cursor);
     }
 
     void OnMouseUp() {
-        item.transform.Translate(transform.position);
+        Instantiate(item, gCell.position, Quaternion.identity);
+        Instantiate(redCell, gCell.position, Quaternion.identity);
+        Destroy(gameObject);
     }
     
     void OnMouseExit() {
