@@ -6,7 +6,7 @@ public abstract class Tower : MonoBehaviour {
     public GameObject bullet;
 
     protected float range = 10.0f;
-    protected float damage; // the actual dealing damage is in the Bullet class;
+    protected float damage = 1f; // the actual dealing damage is in the Bullet class;
     protected float cooldown = .5f;
     protected float lastFire = 0.0f;
     protected Transform target = null;

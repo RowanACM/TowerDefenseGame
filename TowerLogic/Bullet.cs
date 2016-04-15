@@ -9,10 +9,10 @@ public class Bullet : MonoBehaviour {
     public float ApproachingTarget = 1.0f;
     public float transition = 0.0f;
     public bool fired = false;
-    float range = 5f;
+    float range = 2f;
 	public bool hasAreaOfEffect = false; // does the bullet explode on impact?
 	private bool isExploding = false; // is the bullet exploding at the moment?
-	public float areaOfEffect = 10f;
+	public float areaOfEffect = 5f;
 	
 	// Update is called once per frame
 	void Update () {
@@ -40,6 +40,14 @@ public class Bullet : MonoBehaviour {
 			float distance = Vector3.Distance (transform.position, Target.position);
 			if (distance <= range) { // if bullet hits the target;
 				DoDamage (Target, damage);
+
+				if (!isExploding) {
+					if (hasAreaOfEffect) {
+						StartCoroutine ("AreaOfEffectCoroutine");
+					} else {
+						Destroy (gameObject); //destroy bullet right away;
+					}
+				}
 			}
 		}
     }
@@ -56,17 +64,14 @@ public class Bullet : MonoBehaviour {
 		}
 
 		tHealth.checkHealth ();
-		if (!isExploding) {
-			if (hasAreaOfEffect) {
-				StartCoroutine ("AreaOfEffectCoroutine");
-			} else {
-				Destroy (gameObject); //destroy bullet right away;
-			}
-		}
+
     }
 
 	IEnumerator AreaOfEffectCoroutine() {
+		isExploding = true;
 		GameObject explosion = new GameObject ("Exposion");
+		Transform transformComponent = explosion.GetComponent<Transform> ();
+		transformComponent.position = transform.position;
 		Damage damageComponent = explosion.AddComponent<Damage> ();
 		damageComponent.damage = this.damage;
 		SphereCollider sphereCollider = explosion.AddComponent<SphereCollider> ();

@@ -3,11 +3,11 @@ using System.Collections;
 
 public class Fan : Tower {
 
-    private float aoeRange = 2.0f;
+    private float aoeRange = 10.0f;
     
     public Fan()
     {
-	damage = .5f;
+	damage = .05f;
         cooldown = .1f;
         range = 50f;
     }
@@ -36,7 +36,7 @@ public class Fan : Tower {
             if(distance <= aoeRange)
             {
                 GameObject Bul = Instantiate(bullet, transform.position, Quaternion.identity) as GameObject;    //Instatiate the bullet
-                Bul.GetComponent<Bullet>().Targeting(transform, b.transform, damage);   //get components of Bullet, then pass in the tower, target ,tower damge;
+                Bul.GetComponent<Bullet>().Targeting(transform, b.transform, damage);   //get components of Bullet, then pass in the tower, target ,tower damage;
             }
         }
     }
