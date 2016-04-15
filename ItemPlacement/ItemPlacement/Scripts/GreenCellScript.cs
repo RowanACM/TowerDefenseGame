@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GreenCellScript : DragAndDrop {
+public class GreenCellScript : MonoBehaviour {
     private Color startColor;
     public GameObject item;
     public Transform gCell;
     public Transform redCell;
+    private DragAndDrop drag;
     
 
     void OnMouseEnter() {
@@ -14,9 +15,14 @@ public class GreenCellScript : DragAndDrop {
     }
 
     void OnMouseUp() {
-        Instantiate(item, gCell.position, Quaternion.identity);
-        Instantiate(redCell, gCell.position, Quaternion.identity);
-        Destroy(gameObject);
+        if(drag.available) {
+            Instantiate(item, gCell.position, Quaternion.identity);
+            Instantiate(redCell, gCell.position, Quaternion.identity);
+            Destroy(gameObject);
+            drag.available = false;
+            print("in");
+        }
+        print("not in");
     }
     
     void OnMouseExit() {

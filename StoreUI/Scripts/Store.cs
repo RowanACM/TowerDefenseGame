@@ -16,6 +16,7 @@ public class Store : MonoBehaviour {
 	public GameObject selectedItemPanel;
 	public GameObject purchaseItem;
 
+
 	void Start(){
 		selectedObject = null;
 	}
@@ -99,6 +100,7 @@ public class Store : MonoBehaviour {
 			Destroy (selectedObject);
 			selectedObject = null;
 		}
+
 	}
 
 	public void setItem(GameObject selectedButton)
