@@ -3,6 +3,8 @@ using System.Collections;
 
 public class BugSpray : Tower {
 
+    private float aoeRange = 2.0f;
+
     public BugSpray()
     {
         range *= .5f;
