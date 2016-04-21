@@ -24,6 +24,7 @@ public abstract class Tower : MonoBehaviour {
     */
     
 	void Update () {
+		
         if(Time.time - lastFire > cooldown) // attack process;
         {
             Detect();

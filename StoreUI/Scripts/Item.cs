@@ -5,9 +5,15 @@ public class Item : MonoBehaviour {
 
 	public string itemName;
 	public Sprite image;
+	public int price;
 	// Use this for initialization
 	void Start () {
 	
+	}
+
+	public int GetPrice()
+	{
+		return price;
 	}
 
 	public string getName()

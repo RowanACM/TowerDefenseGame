@@ -5,11 +5,9 @@ using System.Collections.Generic;
 public class GridScript : MonoBehaviour {
 
     public List<Transform> cells = new List<Transform>(100);
-    public Transform GreenCell;
-    public Transform RedCell;
+    public GameObject gridCell;
     public Vector3 Size;
     public string SecretCode;
-    public Transform cell;
     int c = 0;
 
 	void Start() {
@@ -21,14 +19,15 @@ public class GridScript : MonoBehaviour {
             for (int z = 0; z < Size.z; z++) {
                 c++;
                 string part = SecretCode.Substring(c, 1);
+				GameObject cell = (GameObject)Instantiate(gridCell, new Vector3(6*x-28, 1, 6*z-30), Quaternion.identity);
                 if(part.Equals("1")) {
-                    Instantiate(GreenCell, new Vector3(6*x-28, 1, 6*z-30), Quaternion.identity);
-                    cells.Add(GreenCell);
+                    
+					cell.GetComponent<CellScript>().setClosed (false);
                 }
                 else {
-                    Instantiate(RedCell, new Vector3(6*x-28, 1, 6*z-30), Quaternion.identity);
-                    cells.Add(RedCell);
+					cell.GetComponent<CellScript>().setClosed(true);
                 }
+				cells.Add (cell.transform);
             }
         }
     }

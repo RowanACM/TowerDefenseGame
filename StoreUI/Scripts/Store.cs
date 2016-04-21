@@ -14,7 +14,6 @@ public class Store : MonoBehaviour {
 	public Text selectedItemText;
 	public Image selectedItemImage;
 	public GameObject selectedItemPanel;
-	public GameObject purchaseItem;
 
 
 	void Start(){
@@ -44,18 +43,6 @@ public class Store : MonoBehaviour {
 				} 
 			}
 		}
-		if (purchaseItem) {
-			Ray ray = gameCamera.GetComponent<Camera> ().ScreenPointToRay (Input.mousePosition);
-			RaycastHit hit;
-			if ( Physics.Raycast (ray,out hit,100.0f)){ 
-				//suppose i have two objects here named obj1 and obj2.. how do i select obj1 to be transformed 
-				purchaseItem.transform.position = hit.point;
-			}
-			if (Input.GetMouseButtonUp (0)) {
-				purchaseItem.GetComponent<Collider> ().enabled = true;
-				purchaseItem = null;
-			}
-		}
 		if (selectedObject) {
 			selectedItemPanel.SetActive (true);
 			Upgradable upgradeComponent = selectedObject.GetComponent<Upgradable> ();
@@ -80,6 +67,15 @@ public class Store : MonoBehaviour {
 		}
 
 		moneyAmount.text = money.ToString ();
+	}
+
+	public bool purchase(Item purchaseItem)
+	{
+		if (money >= purchaseItem.GetPrice()) {
+			money -= purchaseItem.GetPrice ();
+			return true;
+		}
+		return false;
 	}
 
 	public void upgrade()
