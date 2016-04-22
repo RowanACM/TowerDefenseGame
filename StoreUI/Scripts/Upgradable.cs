@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Upgradable : MonoBehaviour {
 
-	public const int maxLevel = 3;
+	public int maxLevel = 3;
 	[Range(1,3)]
 	public int level;
 	public int[] upgradeCosts;

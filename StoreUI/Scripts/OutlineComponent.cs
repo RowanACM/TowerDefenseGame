@@ -11,18 +11,15 @@ public class OutlineComponent : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if (startEnabled) {
-			SetOutlineColor (color);
-			SetOutlineWidth (outlineWidth);
-			outlineEnabled = true;
+			Enable ();
 		} else {
-			SetOutlineWidth (0.0f);
-			outlineEnabled = false;
+			Disable ();
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	public bool isOutlineEnabled()
@@ -32,23 +29,19 @@ public class OutlineComponent : MonoBehaviour {
 
 	public void Enable()
 	{
-		SetOutlineColor (color);
-		SetOutlineWidth (outlineWidth);
+		if (GetComponent<ParticleSystem> ()) {
+			GetComponent<ParticleSystem> ().Play ();
+		}
 		outlineEnabled = true;
 	}
 
-	private void SetOutlineColor(Color color)
-	{
-		GetComponent<MeshRenderer> ().material.SetColor ("_OutColor", color);
-	}
-	private void SetOutlineWidth(float width)
-	{
-		GetComponent<MeshRenderer> ().material.SetFloat ("_Outline", width);
-	}
 
 	public void Disable()
 	{
-		SetOutlineWidth (0.0f);
+		if (GetComponent<ParticleSystem> ()) {
+			GetComponent<ParticleSystem> ().Pause ();
+			GetComponent<ParticleSystem> ().Clear ();
+		}
 		outlineEnabled = false;
 	}
 }

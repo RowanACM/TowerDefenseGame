@@ -52,7 +52,7 @@ public class DragAndDropPurchase : MonoBehaviour {
 			Collider[] hitColliders = Physics.OverlapSphere(hit.point, spawnDropRadius);
 			for (int i = 0; i < hitColliders.Length; i++) {
 				CellScript foundCell = hitColliders [i].GetComponent<CellScript> ();
-				if (foundCell != null) {
+				if (foundCell != null && foundCell.IsOpen()) {
 					float dist = (foundCell.transform.position - hit.point).magnitude;
 					if (dist < closestDist) {
 						closestCell = foundCell;
@@ -95,6 +95,7 @@ public class DragAndDropPurchase : MonoBehaviour {
 			spawnPoint.AddItem (spawnedItem);
 			//enable collider is cool
 			spawnedItem.GetComponent<Collider> ().enabled = true;
+			gameStore.setSelectedItem (spawnedItem);
 		}
 	}
 }
