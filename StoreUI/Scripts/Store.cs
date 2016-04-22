@@ -20,6 +20,18 @@ public class Store : MonoBehaviour {
 		selectedObject = null;
 	}
 
+	public void setSelectedItem(GameObject item)
+	{
+		if (selectedObject) {
+			selectedObject.GetComponent<OutlineComponent> ().Disable ();
+			selectedObject = null;
+		}
+		if (item) {
+			item.GetComponent<OutlineComponent> ().Enable ();
+			selectedObject = item;
+		}
+	}
+
 	void Update() {
 		if (Input.GetMouseButtonDown (0)) {
 			Ray ray = gameCamera.GetComponent<Camera> ().ScreenPointToRay (Input.mousePosition);
@@ -30,15 +42,10 @@ public class Store : MonoBehaviour {
 				if(hitObject != null && hitObject.GetComponent<OutlineComponent>() != null) { 
 					if(selectedObject == hitObject)
 					{
-						hitObject.GetComponent<OutlineComponent>().Disable ();
-						selectedObject = null;
+						setSelectedItem (null);
 					} 
 					else {
-						if (selectedObject) {
-							selectedObject.GetComponent<OutlineComponent>().Disable ();
-						}
-						hitObject.GetComponent<OutlineComponent>().Enable ();
-						selectedObject = hitObject;
+						setSelectedItem (hitObject);
 					}
 				} 
 			}
