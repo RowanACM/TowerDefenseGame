@@ -4,12 +4,14 @@ using System.Collections;
 
 public abstract class Tower : MonoBehaviour {
     public GameObject bullet;
+	public GameObject barrel;
 
     protected float range = 10.0f;
     protected float damage = 1f; // the actual dealing damage is in the Bullet class;
     protected float cooldown = .5f;
     protected float lastFire = 0.0f;
     protected Transform target = null;
+
     public float health; // NEED to be determine base on boss bugs attacks.
 
 	// Use this for initialization
@@ -40,7 +42,7 @@ public abstract class Tower : MonoBehaviour {
     {
         lastFire = Time.time;   //set lastFire to the time it fire.
 
-        GameObject Bul = Instantiate(bullet, transform.position, Quaternion.identity) as GameObject;    //Instatiate the bullet
+        GameObject Bul = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;    //Instatiate the bullet
         Bul.GetComponent<Bullet>().Targeting(transform,t,damage);   //get components of Bullet, then pass in the tower, target ,tower damge;
         target = null;      //reset target.
     }
@@ -61,6 +63,11 @@ public abstract class Tower : MonoBehaviour {
                 distance = dist;
             }
         }
+
+		if (nearestBug != null) {
+			Vector3 dir = nearestBug.position - this.transform.position;
+			this.transform.rotation = Quaternion.LookRotation(dir);
+		}
 
         if(distance <= range)       // if the nearestBug is in tower attack range, set it to the target;
         {

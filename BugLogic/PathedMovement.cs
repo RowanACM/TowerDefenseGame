@@ -33,6 +33,8 @@ public class PathedMovement : Movement {
 
 	private void movementTowardsPoint () {
 		transform.position = Vector3.MoveTowards (transform.position, this.point.transform.position, this.movementSpeed * Time.deltaTime);
+		Quaternion targetingRotation = Quaternion.LookRotation (this.point.transform.position - transform.position);
+		transform.rotation = Quaternion.Lerp (this.transform.rotation, targetingRotation, Time.deltaTime);
 		if (transform.position.Equals(this.point.transform.position)) {
 			setPoint ();
 		}
