@@ -4,7 +4,6 @@ using System.Collections;
 
 public abstract class Tower : MonoBehaviour {
     public GameObject bullet;
-	public GameObject barrel;
 
     protected float range = 10.0f;
     protected float damage = 1f; // the actual dealing damage is in the Bullet class;
@@ -42,7 +41,7 @@ public abstract class Tower : MonoBehaviour {
     {
         lastFire = Time.time;   //set lastFire to the time it fire.
 
-        GameObject Bul = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;    //Instatiate the bullet
+        GameObject Bul = Instantiate(bullet, this.transform.position, Quaternion.identity) as GameObject;    //Instatiate the bullet
         Bul.GetComponent<Bullet>().Targeting(transform,t,damage);   //get components of Bullet, then pass in the tower, target ,tower damge;
         target = null;      //reset target.
     }
