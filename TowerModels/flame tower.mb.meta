@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: bc516af262572d5489a51e8c20d1dfe5
+timeCreated: 1461958973
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: emitter1
+    100002: emitter2
+    100004: emitter3
+    100006: emitter4
+    100008: emitter5
+    100010: emitter6
+    100012: emitter7
+    100014: emitter8
+    100016: //RootNode
+    100018: flame:flamethrower2
+    100020: flame:particle1
+    100022: flame:particle2
+    100024: flame:turbulenceField1
+    100026: nurbsCylinder1
+    100028: nurbsCylinder2
+    100030: nurbsCylinder3
+    100032: pCube1
+    100034: pCube3
+    100036: pCube4
+    100038: pCube5
+    100040: pCube6
+    100042: pCube7
+    100044: pCube8
+    100046: pCylinder1
+    100048: pCylinder3
+    100050: pCylinder4
+    100052: pCylinder5
+    100054: pPlane1
+    100056: pPlane2
+    100058: pSphere1
+    100060: pSphere2
+    100062: pTorus1
+    100064: turbulenceField1
+    100066: turbulenceField2
+    100068: turbulenceField3
+    100070: turbulenceField4
+    100072: turbulenceField5
+    100074: turbulenceField6
+    100076: turbulenceField7
+    100078: turbulenceField8
+    400000: emitter1
+    400002: emitter2
+    400004: emitter3
+    400006: emitter4
+    400008: emitter5
+    400010: emitter6
+    400012: emitter7
+    400014: emitter8
+    400016: //RootNode
+    400018: flame:flamethrower2
+    400020: flame:particle1
+    400022: flame:particle2
+    400024: flame:turbulenceField1
+    400026: nurbsCylinder1
+    400028: nurbsCylinder2
+    400030: nurbsCylinder3
+    400032: pCube1
+    400034: pCube3
+    400036: pCube4
+    400038: pCube5
+    400040: pCube6
+    400042: pCube7
+    400044: pCube8
+    400046: pCylinder1
+    400048: pCylinder3
+    400050: pCylinder4
+    400052: pCylinder5
+    400054: pPlane1
+    400056: pPlane2
+    400058: pSphere1
+    400060: pSphere2
+    400062: pTorus1
+    400064: turbulenceField1
+    400066: turbulenceField2
+    400068: turbulenceField3
+    400070: turbulenceField4
+    400072: turbulenceField5
+    400074: turbulenceField6
+    400076: turbulenceField7
+    400078: turbulenceField8
+    2300000: pCube1
+    2300002: pCube3
+    2300004: pCube4
+    2300006: pCube5
+    2300008: pCube6
+    2300010: pCube7
+    2300012: pCube8
+    2300014: pCylinder1
+    2300016: pCylinder3
+    2300018: pCylinder4
+    2300020: pCylinder5
+    2300022: pPlane1
+    2300024: pPlane2
+    2300026: pSphere1
+    2300028: pSphere2
+    2300030: pTorus1
+    3300000: pCube1
+    3300002: pCube3
+    3300004: pCube4
+    3300006: pCube5
+    3300008: pCube6
+    3300010: pCube7
+    3300012: pCube8
+    3300014: pCylinder1
+    3300016: pCylinder3
+    3300018: pCylinder4
+    3300020: pCylinder5
+    3300022: pPlane1
+    3300024: pPlane2
+    3300026: pSphere1
+    3300028: pSphere2
+    3300030: pTorus1
+    4300000: pSphere1
+    4300002: pCube1
+    4300004: pCylinder1
+    4300006: pSphere2
+    4300008: pCube3
+    4300010: pCube4
+    4300012: pCube5
+    4300014: pCylinder3
+    4300016: pCylinder4
+    4300018: pTorus1
+    4300020: pCylinder5
+    4300022: pPlane1
+    4300024: pPlane2
+    4300026: pCube6
+    4300028: pCube7
+    4300030: pCube8
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
