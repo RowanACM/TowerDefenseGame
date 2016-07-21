@@ -33,7 +33,7 @@ public class Store : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetMouseButtonDown (0)) {
+		/*if (Input.GetMouseButtonDown (0)) {
 			Ray ray = gameCamera.GetComponent<Camera> ().ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 			if ( Physics.Raycast (ray,out hit,100.0f)){ 
@@ -49,7 +49,7 @@ public class Store : MonoBehaviour {
 					}
 				} 
 			}
-		}
+		}*/
 		if (selectedObject) {
 			selectedItemPanel.SetActive (true);
 			Upgradable upgradeComponent = selectedObject.GetComponent<Upgradable> ();

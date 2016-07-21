@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(ParticleSystem))]
 public class OutlineComponent : MonoBehaviour {
 
 	public float outlineWidth;
@@ -21,6 +22,11 @@ public class OutlineComponent : MonoBehaviour {
 	void Update () {
 
 	}
+	
+	public void setColor(Color newColor)
+	{
+		GetComponent<ParticleSystem>().startColor = newColor;
+	}
 
 	public bool isOutlineEnabled()
 	{
@@ -29,19 +35,19 @@ public class OutlineComponent : MonoBehaviour {
 
 	public void Enable()
 	{
-		if (GetComponent<ParticleSystem> ()) {
-			GetComponent<ParticleSystem> ().Play ();
-		}
+		
+		GetComponent<ParticleSystem> ().Play ();
+		
 		outlineEnabled = true;
 	}
 
 
 	public void Disable()
 	{
-		if (GetComponent<ParticleSystem> ()) {
-			GetComponent<ParticleSystem> ().Pause ();
-			GetComponent<ParticleSystem> ().Clear ();
-		}
+		
+		GetComponent<ParticleSystem> ().Pause ();
+		GetComponent<ParticleSystem> ().Clear ();
+		
 		outlineEnabled = false;
 	}
 }
