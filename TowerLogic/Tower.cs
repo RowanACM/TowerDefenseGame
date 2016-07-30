@@ -41,8 +41,9 @@ public abstract class Tower : MonoBehaviour {
     {
         lastFire = Time.time;   //set lastFire to the time it fire.
 
-        GameObject Bul = Instantiate(bullet, this.transform.position + new Vector3(0, 20, 0), Quaternion.identity) as GameObject;    //Instatiate the bullet
-        Bul.GetComponent<Bullet>().Targeting(transform,t,damage);   //get components of Bullet, then pass in the tower, target ,tower damge;
+        GameObject Bul = Instantiate(bullet, this.transform.position, Quaternion.identity) as GameObject;    //Instatiate the bullet
+		// Bul.transform.Translate ( 0f, 1000f, 0f, Space.World); WHY CAN'T WE MOVE THE BULLET OR HAVE IT SPAWN SOMEWHERE ELSE?
+        Bul.GetComponent<Bullet>().Targeting(transform,t,damage);   //get components of Bullet, then pass in the tower, target, tower damge;
         target = null;      //reset target.
     }
 
