@@ -12,6 +12,15 @@ public class StoreItem : MonoBehaviour{
 	private CellScript spawnPoint;
 	private DraggingState state;
 	private bool completed;
+	private bool beginClick;
+	private TextMesh costText;
+	private TextMesh fundsAlertText;
+	public LayerMask groundLayer;
+	
+	public bool isPurchased()
+	{
+		return completed;
+	}
 	
 	float spawnDropRadius = 10.0f;
 	
@@ -19,6 +28,7 @@ public class StoreItem : MonoBehaviour{
 	void Start () {
 
 		GetComponent<OutlineComponent>().Enable();
+		GetComponent<OutlineComponent>().setParticles(false);
 		
 	}
 	
@@ -26,40 +36,74 @@ public class StoreItem : MonoBehaviour{
 	{
 		state = DraggingState.DraggingValid;
 		completed = false;
+		beginClick = false;
+		GetComponent<OutlineComponent>().Enable();
 		
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-		switch(state)
-		{
-		case DraggingState.DraggingValid: GetComponent<OutlineComponent>().setColor(Color.green);
-			break;
-		case DraggingState.DraggingInvalid: GetComponent<OutlineComponent>().setColor(Color.red);
-			break;
-		case DraggingState.DroppedInvalid: GetComponent<OutlineComponent>().setColor(Color.red);
-			break;
-		case DraggingState.DroppedValid: GetComponent<OutlineComponent>().setColor(Color.white);
-			break;
-		default:
-			break;
+		print("hello where art though");
+		if(!beginClick) {
+			print("going into the switch");
+			switch(state)
+			{
+			
+			case DraggingState.DraggingValid: GetComponent<OutlineComponent>().setColor(Color.green);
+				break;
+			case DraggingState.DraggingInvalid: GetComponent<OutlineComponent>().setColor(Color.red);
+				break;
+			case DraggingState.DroppedInvalid: GetComponent<OutlineComponent>().setColor(Color.red);
+				break;
+			case DraggingState.DroppedValid: GetComponent<OutlineComponent>().setColor(Color.white);
+				break;
+			default:
+				break;
+			}
 		}
-		
+	
+		Store store = FindObjectOfType<Store>();
+		if(!completed) {
+			if(costText == null) {
+				print ("adding a cost text!");
+				costText = GetComponentInChildren<TextDisplay>().Add(0);
+				costText.text = "Cost: " + GetComponent<Item>().GetPrice();
+			}
+			if (store.isPurchaseable (this.GetComponent<Item> ())) {
+				if(fundsAlertText) {
+					GetComponentInChildren<TextDisplay>().Remove(fundsAlertText);
+					fundsAlertText = null;
+				}
+				if(state == DraggingState.DraggingValid)
+					costText.color = Color.green;
+				else
+					costText.color = Color.red;
+			}
+			else {
+				if (!fundsAlertText) {
+					fundsAlertText = GetComponentInChildren<TextDisplay>().Add(1);
+					fundsAlertText.text = "INSUFFICIENT FUNDS";
+					fundsAlertText.color = Color.red;
+				}
+				costText.color = Color.red;
+			}
+		}
+
 		if (state == DraggingState.DraggingValid || state == DraggingState.DraggingInvalid) {
+			
 			if(Input.GetMouseButtonUp(0))
 			{
 				DoneDragging();
 			}
 			else
 			{
-				GetComponent<Collider> ().enabled = false;
+				//GetComponentInChildren<Collider> ().enabled = false;
 				//put placement code here
 				//cast a ray to get where mouse is pointing in world
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit hit;
-				if (Physics.Raycast (ray, out hit, 100.0f)) { 
+				if (Physics.Raycast (ray, out hit, 100.0f, groundLayer)) { 
 					
 					//now we'll look for objects within a radius, and find the closest object with CellScript
 					CellScript closestCell = null;
@@ -79,7 +123,15 @@ public class StoreItem : MonoBehaviour{
 					}
 					//if there was a closest one in radius, we set it as our spawnPoint 
 					if (closestCell) {
-						spawnPoint = closestCell;
+						if(closestCell != spawnPoint)
+						{
+							
+							Store gameStore = FindObjectOfType<Store> ();
+							gameStore.setSelectedItem(null);
+							beginClick = false;
+							spawnPoint = closestCell;
+							spawnPoint.SetPreviewPosition (this.gameObject);
+						}
 						if(closestCell.IsOpen())
 							state = DraggingState.DraggingValid;
 						else
@@ -92,16 +144,14 @@ public class StoreItem : MonoBehaviour{
 				}
 			}
 			//enable collider is cool
-			GetComponent<Collider> ().enabled = true;
+			//GetComponentInChildren<Collider> ().enabled = true;
 			//could do this on mouse exit, just means we'll only activate our GameObject when dragging
 			
 			//we'll disable the collider so that the OnMouseOver, etc. methods on the cells work properly through the object
 			
 			//would like to have some sort of ghosting effect in future, we'll put that in this method
 			SetGhost (true);
-			//if we do have a spawnPoint found, we'll put our object at the preview position for that spawn
-			if (spawnPoint)
-				spawnPoint.LockPreviewPosition (this.gameObject);
+			
 		}
 	}
 	
@@ -112,17 +162,44 @@ public class StoreItem : MonoBehaviour{
 		
 	}
 	
+	/**
+	*	Called when this item was selected as the current Store item but becomes deselected.
+	*/
+	public void onDeselect() {
+		if(state == DraggingState.DroppedValid) {
+			GetComponent<OutlineComponent>().Disable();
+			GetComponent<OutlineComponent>().setParticles(false);
+		}
+	}
+	
+	public void onSelect(){
+		GetComponent<OutlineComponent>().Enable();
+		GetComponent<OutlineComponent>().setParticles(true);
+		GetComponent<OutlineComponent>().makeOpaque();
+	}
+	
 	//placeholder for whatever effect we want to display when an object is destroyed from a failed drag and drop
 	void Poof()
 	{
+		
 	}
 	
 	//on mouse down, we'll instantiate our object and set it inactive until we drag the mouse off
 	public void OnMouseDown()
 	{
+		Store gameStore = FindObjectOfType<Store> ();
+		if(state == DraggingState.DroppedValid)
+			gameStore.setSelectedItem(this.gameObject);
+		else
+			gameStore.setSelectedItem(null);
+		
 		state = DraggingState.DraggingValid;
-		spawnPoint.AddItem(null);
+		if(spawnPoint)
+			spawnPoint.AddItem(null);
 		GetComponent<OutlineComponent>().Enable();
+		
+		beginClick = true;
+		
 	}
 	
 	public void DoneDragging()
@@ -151,6 +228,10 @@ public class StoreItem : MonoBehaviour{
 				state = DraggingState.DroppedInvalid;
 			} else {
 				//okay its go time, make it legit, put a ring on it, etc.
+				if(costText) {
+					GetComponentInChildren<TextDisplay>().Remove(costText);
+					costText = null;
+				}
 				//no more ghost
 				SetGhost (false);
 				//final method to lock our object into the cell

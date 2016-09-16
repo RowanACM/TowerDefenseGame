@@ -6,27 +6,34 @@ public class CellScript : MonoBehaviour {
 	private Color startColor;
 	public GameObject item;
 	public bool highlighted;
-	private float opacity;
+	public float opacity;
 	public bool closed;
+	private float posLockSpeed;
+	private float posLockAccel;
 
 	void Start() {
 		startColor = GetComponent<Renderer>().material.color;
 	}
 
+	public void setPosLockAttributes(float speed, float accel)
+	{
+		this.posLockSpeed = speed;
+		this.posLockAccel = accel;
+	}
+
 	void Update()
 	{
-		if (highlighted) {
 			Material currMaterial = GetComponent<Renderer> ().material;
-			if (IsOpen ()) {
-				currMaterial.color = Color.green;
+			if (item) {
+				currMaterial.color = new Color(0.0f,0.0f,0.0f,0.0f);
 			} else {
-				currMaterial.color = Color.red;
+				if(!closed){
+					currMaterial.color = Color.green;
+				} else {
+					currMaterial.color = Color.red;
+				}
+				currMaterial.color = new Color (currMaterial.color.r, currMaterial.color.g, currMaterial.color.b, opacity);
 			}
-			currMaterial.color = new Color (currMaterial.color.r, currMaterial.color.g, currMaterial.color.b, opacity);
-			highlighted = false;
-		} else {
-			GetComponent<Renderer>().material.color = startColor;
-		}
 	}
 
 	public void highlight(float opacity)
@@ -47,15 +54,15 @@ public class CellScript : MonoBehaviour {
 		return this.transform;
 	}
 
-	public void LockPreviewPosition(GameObject item)
+	public void SetPreviewPosition(GameObject item)
 	{
-		item.transform.position = this.transform.position;
+		item.GetComponent<MoveToTargetComponent>().startMove(posLockSpeed, posLockAccel, this.transform.position);
 	}
 
 	public void AddItem(GameObject item)
 	{
 		this.item = item;
 		if(item)
-			LockPreviewPosition (item);
+			SetPreviewPosition (item);
 	}
 }

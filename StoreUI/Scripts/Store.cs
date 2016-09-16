@@ -23,11 +23,11 @@ public class Store : MonoBehaviour {
 	public void setSelectedItem(GameObject item)
 	{
 		if (selectedObject) {
-			selectedObject.GetComponent<OutlineComponent> ().Disable ();
+			selectedObject.GetComponent<StoreItem> ().onDeselect ();
 			selectedObject = null;
 		}
 		if (item) {
-			item.GetComponent<OutlineComponent> ().Enable ();
+			item.GetComponent<StoreItem> ().onSelect ();
 			selectedObject = item;
 		}
 	}
@@ -75,6 +75,10 @@ public class Store : MonoBehaviour {
 
 		moneyAmount.text = money.ToString ();
 	}
+	
+	public bool isPurchaseable(Item purchaseItem) {
+		return money >= purchaseItem.GetPrice();
+	}
 
 	public bool purchase(Item purchaseItem)
 	{
@@ -94,7 +98,19 @@ public class Store : MonoBehaviour {
 		}
 		
 	}
-
+	
+	//sell a given item
+	public void sell(GameObject item)
+	{
+		Upgradable upgrader = item.GetComponent<Upgradable>();
+		if (upgrader) {
+			money += upgrader.getSellValue ();
+			Destroy (item);
+			item = null;
+		}
+	}
+	
+	//sell the current selected item
 	public void sell()
 	{
 		Upgradable upgrader = selectedObject.GetComponent<Upgradable>();

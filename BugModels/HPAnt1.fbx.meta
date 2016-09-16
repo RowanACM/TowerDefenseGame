@@ -6,9 +6,21 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Camera
+    100004: HPAnt_low
+    100006: Sun
+    100008: Sun.001
+    100010: Sun.002
     400000: //RootNode
+    400002: Camera
+    400004: HPAnt_low
+    400006: Sun
+    400008: Sun.001
+    400010: Sun.002
     2300000: //RootNode
+    2300002: HPAnt_low
     3300000: //RootNode
+    3300002: HPAnt_low
     4300000: HPAnt_low
   materials:
     importMaterials: 1
