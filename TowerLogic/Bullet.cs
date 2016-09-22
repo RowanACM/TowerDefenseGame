@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour {
 
-    public Transform Tower;
+    public Transform Tower; // the spawnpoint
     public Transform Target;
     public float damage;
     public float ApproachingTarget = 1.0f;

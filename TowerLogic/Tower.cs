@@ -4,6 +4,8 @@ using System.Collections;
 
 public abstract class Tower : MonoBehaviour {
     public GameObject bullet;
+	public GameObject bulletSpawn;
+	protected float bulletSpawnDistance = 17f;
 
     protected float range = 10.0f;
     protected float damage = 1f; // the actual dealing damage is in the Bullet class;
@@ -41,8 +43,10 @@ public abstract class Tower : MonoBehaviour {
     {
         lastFire = Time.time;   //set lastFire to the time it fire.
 
-        GameObject Bul = Instantiate(bullet, this.transform.position + new Vector3(0, 20, 0), Quaternion.identity) as GameObject;    //Instatiate the bullet
-        Bul.GetComponent<Bullet>().Targeting(transform,t,damage);   //get components of Bullet, then pass in the tower, target ,tower damge;
+        GameObject Bul = Instantiate(bullet, bulletSpawn.transform.position, this.transform.rotation) as GameObject;    //Instatiate the bullet
+
+		// Bul.transform.Translate ( 0f, 1000f, 0f, Space.World); WHY CAN'T WE MOVE THE BULLET OR HAVE IT SPAWN SOMEWHERE ELSE?
+        Bul.GetComponent<Bullet>().Targeting(bulletSpawn.transform, t, damage);   //get components of Bullet, then pass in the tower, target, tower damge;
         target = null;      //reset target.
     }
 
@@ -51,7 +55,7 @@ public abstract class Tower : MonoBehaviour {
     {
         Bug[] bugs = FindObjectsOfType<Bug>();  // Get all the bugs in the scene;
         Transform nearestBug = null;
-        float distance = Mathf.Infinity;    
+        float distance = Mathf.Infinity;
 
         foreach(Bug b in bugs)
         {
@@ -64,8 +68,11 @@ public abstract class Tower : MonoBehaviour {
         }
 
 		if (nearestBug != null) {
+			// this turns the tower
 			Vector3 dir = nearestBug.position - this.transform.position;
 			this.transform.rotation = Quaternion.LookRotation(dir);
+
+			bulletSpawn.transform.position = Vector3.MoveTowards(this.transform.position, nearestBug.transform.position, bulletSpawnDistance) + Vector3.up;
 		}
 
         if(distance <= range)       // if the nearestBug is in tower attack range, set it to the target;
