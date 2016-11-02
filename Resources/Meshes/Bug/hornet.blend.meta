@@ -1,0 +1,167 @@
+fileFormatVersion: 2
+guid: 00552fb3e86a84ddcbec5e0d522aba9e
+timeCreated: 1469079824
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Cylinder
+    100002: Cylinder_001
+    100004: Cylinder_002
+    100006: Cylinder_003
+    100008: Cylinder_004
+    100010: Cylinder_005
+    100012: Cylinder_006
+    100014: Cylinder_007
+    100016: Cylinder_008
+    100018: Cylinder_009
+    100020: Cylinder_MeshPart0
+    100022: Cylinder_MeshPart1
+    100024: Cylinder_MeshPart2
+    100026: Cylinder_MeshPart3
+    100028: //RootNode
+    100030: Sphere
+    100032: Sphere_001
+    100034: Sphere_002
+    100036: Sphere_003
+    100038: Sphere_004
+    400000: Cylinder
+    400002: Cylinder_001
+    400004: Cylinder_002
+    400006: Cylinder_003
+    400008: Cylinder_004
+    400010: Cylinder_005
+    400012: Cylinder_006
+    400014: Cylinder_007
+    400016: Cylinder_008
+    400018: Cylinder_009
+    400020: Cylinder_MeshPart0
+    400022: Cylinder_MeshPart1
+    400024: Cylinder_MeshPart2
+    400026: Cylinder_MeshPart3
+    400028: //RootNode
+    400030: Sphere
+    400032: Sphere_001
+    400034: Sphere_002
+    400036: Sphere_003
+    400038: Sphere_004
+    2300000: Cylinder_001
+    2300002: Cylinder_002
+    2300004: Cylinder_003
+    2300006: Cylinder_004
+    2300008: Cylinder_005
+    2300010: Cylinder_006
+    2300012: Cylinder_007
+    2300014: Cylinder_008
+    2300016: Cylinder_009
+    2300018: Cylinder_MeshPart0
+    2300020: Cylinder_MeshPart1
+    2300022: Cylinder_MeshPart2
+    2300024: Cylinder_MeshPart3
+    2300026: Sphere
+    2300028: Sphere_001
+    2300030: Sphere_002
+    2300032: Sphere_003
+    2300034: Sphere_004
+    3300000: Cylinder_001
+    3300002: Cylinder_002
+    3300004: Cylinder_003
+    3300006: Cylinder_004
+    3300008: Cylinder_005
+    3300010: Cylinder_006
+    3300012: Cylinder_007
+    3300014: Cylinder_008
+    3300016: Cylinder_009
+    3300018: Cylinder_MeshPart0
+    3300020: Cylinder_MeshPart1
+    3300022: Cylinder_MeshPart2
+    3300024: Cylinder_MeshPart3
+    3300026: Sphere
+    3300028: Sphere_001
+    3300030: Sphere_002
+    3300032: Sphere_003
+    3300034: Sphere_004
+    4300000: Cylinder_008
+    4300002: Cylinder_007
+    4300004: Cylinder_004
+    4300006: Cylinder_003
+    4300008: Cylinder_001
+    4300010: Cylinder_MeshPart0
+    4300012: Cylinder_MeshPart1
+    4300014: Cylinder_MeshPart2
+    4300016: Cylinder_MeshPart3
+    4300018: Sphere_001
+    4300020: Sphere_004
+    4300022: Cylinder_009
+    4300024: Cylinder_006
+    4300026: Cylinder_005
+    4300028: Sphere_003
+    4300030: Sphere_002
+    4300032: Cylinder_002
+    4300034: Sphere
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
